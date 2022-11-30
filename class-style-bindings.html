@@ -17,6 +17,7 @@
         <div v-bind:class="'demo-' + textClass"></div>
         <div class="demo" v-bind:class="{ active: isActive, error: hasError }"></div>
         <div class="demo" v-bind:class="objClass"></div>
+        <div class="demo" v-bind:class="arrayClass"></div>
     </div>
 </body>
 <script>
@@ -25,7 +26,7 @@
         data: {
             name: '',
             textClass: 'active',
-            isActive: true,
+            isActive: false,
             hasError: false
         },
         methods: {
@@ -39,6 +40,11 @@
                     active: this.isActive, 
                     error: this.hasError 
                 }
+            },
+            arrayClass: function() {
+                return [
+                    this.isActive ? this.textClass : 'aaa'
+                ]
             }
         }
     })
