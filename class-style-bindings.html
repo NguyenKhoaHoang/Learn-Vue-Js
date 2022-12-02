@@ -11,13 +11,22 @@
 
 <body>
     <div id="app">
-        <h1>name = {{ name }}</h1>
-        <input v-model="name" type="text">
-        <button v-on:click="changeActive">Change Active</button>
-        <div v-bind:class="'demo-' + textClass"></div>
-        <div class="demo" v-bind:class="{ active: isActive, error: hasError }"></div>
-        <div class="demo" v-bind:class="objClass"></div>
-        <div class="demo" v-bind:class="arrayClass"></div>
+        <div v-bind:style="{ backgroundImage: background }">
+            <h1>name = {{ name }}</h1>
+            <input v-model="name" type="text">
+            <button v-on:click="changeActive">Change Active</button>
+            <div v-bind:class="'demo-' + textClass"></div>
+            <div class="demo" v-bind:class="{ active: isActive, error: hasError }"></div>
+            <div class="demo" v-bind:class="objClass"></div>
+            <div class="demo" v-bind:class="arrayClass"></div>
+            
+            <hr>
+    
+            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">
+                SBDFDFD
+            </div>
+        </div>
+        
     </div>
 </body>
 <script>
@@ -27,7 +36,10 @@
             name: '',
             textClass: 'active',
             isActive: false,
-            hasError: false
+            hasError: false,
+            activeColor: 'red',
+            fontSize: 30,
+            bg: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png',
         },
         methods: {
             changeActive() {
@@ -45,6 +57,9 @@
                 return [
                     this.isActive ? this.textClass : 'aaa'
                 ]
+            },
+            background() {
+                return 'url(' + this.bg +')';
             }
         }
     })
